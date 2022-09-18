@@ -1,0 +1,48 @@
+from operator import ne
+from re import I
+from sympy import postorder_traversal
+
+
+def solution(xs):
+    # use sliding window and if there are 0's just move along
+    posProd = 1
+    negVal = []
+    negProd = 1
+    zeroCt = 0
+    if len(xs) ==1:
+        return str(xs[0])
+    for i in xs:
+        if i > 0:
+            posProd *= i
+            # print(posProd )
+        elif i < 0:
+            negVal.append(i)
+        elif i == 0:
+            zeroCt += 1
+    # print(negVal)
+    if len(negVal) % 2 == 1:
+        negVal.remove(max(negVal))
+    for i in negVal:
+        negProd *= i
+        # print("neg Product: "+ str(negProd))
+    # if posProd * negProd <= 0 and zeroCt > 0:
+    #     return "0"
+    if posProd == 1 :
+        if zeroCt > 0:
+            return "0"
+        else:
+            return str(negProd)
+    else:
+        return str(posProd * negProd)
+
+def main():
+    x = [2, 0, 2, 2, 0]
+    print("ans" + str(solution(x)))
+    x = [-2, -3, 4,3, -5]
+    print("ans" + str(solution(x)))
+    x = [-4, 0]
+    print("ans" + str(solution(x)))
+    x = [-2]
+    print("ans" + str(solution(x)))
+if __name__ == "__main__":
+    main()

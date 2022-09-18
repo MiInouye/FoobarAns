@@ -1,0 +1,28 @@
+from regex import I
+
+
+def solution(x):
+    #lookUpTable = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    decrypt = ""
+    for i, char in enumerate(x):
+        
+        asciiVal = ord(char)
+        # print(asciiVal)
+        # print(I)
+        if asciiVal <= 109 and asciiVal >= 97:
+            z = chr(110 + (109 - ord(char)))
+            print(ord(z))
+            decrypt = decrypt + z
+        elif ord(char) <= 122 and ord(char) >= 110:
+            z = chr(97 + (122 - ord(char)))
+            decrypt = decrypt + z
+        else: 
+            decrypt = decrypt + char
+    return decrypt
+
+def main():
+    x = "wrw blf hvv ozhg mrtsg'h vkrhlwv?"
+    solution(x)
+
+if __name__ == "__main__":
+    main()
