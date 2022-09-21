@@ -1,0 +1,10 @@
+def solution(h, q):
+    pass
+
+def main():
+    print("ans :" + str(solution([[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]])))
+    print("correct : 7")
+    print("ans :" + str(solution([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0]])))
+    print("correct : 11")
+if __name__ == "__main__":
+    main()
