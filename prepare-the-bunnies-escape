@@ -1,5 +1,12 @@
-def solution(h, q):
-    pass
+def solution(map):
+    #use depth first search to find all possible paths unobstructed and log all dead ends. 
+    #use another DFS from the dead ends allowing for the removal of 1 wall 
+    #return the shortest distance after the second search
+    start = [0,0]
+    escape = [len(map[0]) - 1, len(map) - 1]
+    for x in map:
+        print(x)
+    return None
 
 def main():
     print("ans :" + str(solution([[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]])))
