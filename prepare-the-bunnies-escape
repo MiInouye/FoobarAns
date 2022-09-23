@@ -1,12 +1,62 @@
+from os import ctermid
+
+
 def solution(map):
-    #use depth first search to find all possible paths unobstructed and log all dead ends. 
-    #use another DFS from the dead ends allowing for the removal of 1 wall 
+    #use path finding algorithm to find is there is a raw path and log dead ends that if in the perfect conditions would lead to a better path.
+    #after take the dead ends and see if they have a path to the escape pod 
     #return the shortest distance after the second search
+
+    
     start = [0,0]
     escape = [len(map[0]) - 1, len(map) - 1]
-    for x in map:
-        print(x)
+    deadEnds = []
+    min_path = escape[0] + escape[1] - 1
+    def pathFinder(map):
+        cnt = 0
+        visited = map
+        q = []
+        q.append(start)
+        dir = [[0,-1],[0,1],[1,0],[-1,0]]
+        while q:
+            curr = q[0]
+            q.pop(0)
+            cnt += 1
+            visited[curr[0]][curr[1]] = -1 
+            if curr == escape:
+                return True
+            for x in dir:
+                r,c = curr[0] + dir[i][0], curr[1] + dir[i][1]
+                if isValid([r,c]):
+                    if map[r][c] == 1:
+                        # if deadEndCheck([r,c]):
+                        #     deadEnds.append([r,c,cnt])
+                        pass
+                    elif map[r][c] == 0:
+                        q.append([r,c])
+
+        return False
+
+    def isValid(pos):
+        # dir = [[0,-1],[0,1],[1,0],[-1,0]]
+        row, col = pos
+        if row < 0 or col < 0 or row > escape[1] or col > escape[0]:
+            return False
+    def neighbors(pos):
+        dir = [[0,-1],[0,1],[1,0],[-1,0]]
+        row, col = pos
+    def deadEndCheck(r,c):
+        cnt = 0
+        for i in dir:
+            x,y = r + dir[i][0], c + dir[i][1]
+            if map[x][y] == 0:
+                cnt += 1
+        if cnt >= 2:
+            return True
+        else: 
+            return False
+
     return None
+    
 
 def main():
     print("ans :" + str(solution([[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]])))
